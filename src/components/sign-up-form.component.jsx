@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import {
 	createAuthUserWithEmailAndPassword,
 	createUserDocumentFromAuth,
@@ -34,10 +35,8 @@ const SignUpForm = () => {
 				email,
 				password
 			);
-
 			await createUserDocumentFromAuth(user, { displayName });
 			resetFormFields();
-			console.log('User created successfully:', user);
 		} catch (error) {
 			if (error.code === 'auth/email-already-in-use') {
 				alert('Email already in use');

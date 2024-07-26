@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const BaseButton = styled.button`
-	min-width: 165px;
+	min-width: 175px;
 	width: auto;
-	height: 50px;
+	height: auto;
 	letter-spacing: 0.5px;
-	line-height: 50px;
-	padding: 0 35px 0 35px;
-	font-size: 15px;
+	line-height: 30px;
+	padding: 10px 35px 10px 35px;
+	font-size: 12px;
 	background-color: black;
 	color: white;
 	text-transform: uppercase;
@@ -16,8 +16,9 @@ export const BaseButton = styled.button`
 	border: none;
 	cursor: pointer;
 	display: flex;
-	justify-content: center;
+	justify-content: center
 	margin-right: 10px;
+
 
 	&:hover {
 		background-color: white;

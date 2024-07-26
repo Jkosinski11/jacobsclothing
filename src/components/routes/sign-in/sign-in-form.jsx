@@ -1,8 +1,8 @@
 import Button, { BUTTON_TYPES_CLASSES } from '../../button.component';
 import FormInput from '../../form-input.component';
 import {
-	signInWithGooglePopup,
 	signInAuthUserWithEmailAndPassword,
+	signInWithGooglePopup,
 } from '../../../utils/firebase/firebase.utils';
 import {
 	SignInContainer,
@@ -24,18 +24,15 @@ const SignInForm = () => {
 		setFormFields(defaultformFields);
 	};
 
-	const logGoogleUser = async () => {
+	const signInWithGoogle = async () => {
 		await signInWithGooglePopup();
 	};
+
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
 		try {
-			const response = await signInAuthUserWithEmailAndPassword(
-				email,
-				password
-			);
-			console.log(response);
+			await signInAuthUserWithEmailAndPassword(email, password);
 			resetFormFields();
 		} catch (error) {
 			switch (error.code) {
@@ -83,7 +80,7 @@ const SignInForm = () => {
 					<Button type='submit'>Sign in</Button>
 					<Button
 						buttonType={BUTTON_TYPES_CLASSES.google}
-						onClick={logGoogleUser}
+						onClick={signInWithGoogle}
 					>
 						Sign in with google
 					</Button>

@@ -8,7 +8,6 @@ import SignIn from './components/routes/sign-in/sign-in.component';
 import Shop from './components/routes/shop/shop.component';
 import Checkout from './components/routes/checkout-component';
 import { setCurrentUser } from './store/user/user.reducer';
-import { onAuthStateChanged } from 'firebase/auth';
 import {
 	createUserDocumentFromAuth,
 	onAuthStateChangedListener,

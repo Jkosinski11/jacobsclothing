@@ -8,8 +8,8 @@ import {
 	SignInContainer,
 	H2,
 	ButtonsContainer,
-} from '../../../styles/sign-in-form.styles.jsx';
-import { useState } from 'react';
+} from '../../../styles/sign-in-form.styles';
+import { useState, FormEvent, ChangeEvent } from 'react';
 
 const defaultformFields = {
 	email: '',
@@ -28,14 +28,14 @@ const SignInForm = () => {
 		await signInWithGooglePopup();
 	};
 
-	const handleSubmit = async (event) => {
+	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
 		try {
 			await signInAuthUserWithEmailAndPassword(email, password);
 			resetFormFields();
 		} catch (error) {
-			switch (error.code) {
+			switch (error) {
 				case 'auth/user-not-found':
 					alert('user not found');
 					break;
@@ -50,7 +50,7 @@ const SignInForm = () => {
 		}
 	};
 
-	const handleChange = (event) => {
+	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = event.target;
 		setFormFields({ ...formFields, [name]: value });
 	};

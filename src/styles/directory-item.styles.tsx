@@ -1,6 +1,11 @@
+import { FC } from 'react';
 import styled from 'styled-components';
 
-export const BackgroundImage = styled.div`
+interface BackgroundImageProps {
+	imageurl: string;
+}
+
+export const BackgroundImage = styled.div<BackgroundImageProps>`
 	width: 100%;
 	height: 100%;
 	background-position: center;
@@ -49,11 +54,11 @@ export const DirectoryItemContainer = styled.div`
 	&:hover {
 		cursor: pointer;
 	}
-	& ${BackgroundImage} {
+	& ${(props) => props.theme.BackgroundImage} {
 		transform: scale(1.1);
 		transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
 	}
-	& ${DirectoryBody} {
+	& ${(props) => props.theme.DirectoryBody} {
 		opacity: 0.9;
 	}
 	&:first-child {

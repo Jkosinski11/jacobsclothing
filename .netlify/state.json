@@ -1,0 +1,19 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Eagle River",
+			"country": {
+				"code": "US",
+				"name": "United States"
+			},
+			"subdivision": {
+				"code": "AK",
+				"name": "Alaska"
+			},
+			"timezone": "America/Anchorage",
+			"latitude": 61.311,
+			"longitude": -149.5165
+		},
+		"timestamp": 1722029874982
+	}
+}

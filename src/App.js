@@ -1,18 +1,22 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
-
 import { Routes, Route } from 'react-router-dom';
-import Home from './components/routes/home.component';
-import NavigationBar from './components/routes/navigation-bar.component';
-import SignIn from './components/routes/sign-in/sign-in.component';
-import Shop from './components/routes/shop/shop.component';
-import Checkout from './components/routes/checkout-component';
 import { setCurrentUser } from './store/user/user.reducer';
-import { onAuthStateChanged } from 'firebase/auth';
+import Spinner from './components/spinner.component';
 import {
 	createUserDocumentFromAuth,
 	onAuthStateChangedListener,
 } from './utils/firebase/firebase.utils';
+
+const Home = lazy(() => import('./components/routes/home.component'));
+const NavigationBar = lazy(() =>
+	import('./components/routes/navigation-bar.component')
+);
+const SignIn = lazy(() =>
+	import('./components/routes/sign-in/sign-in.component')
+);
+const Shop = lazy(() => import('./components/routes/shop/shop.component'));
+const Checkout = lazy(() => import('./components/routes/checkout-component'));
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -30,14 +34,16 @@ const App = () => {
 	}, []);
 
 	return (
-		<Routes>
-			<Route path='/' element={<NavigationBar />}>
-				<Route index element={<Home />} />
-				<Route path='/shop/*' element={<Shop />} />
-				<Route path='/signIn' element={<SignIn />} />
-				<Route path='/checkout' element={<Checkout />} />
-			</Route>
-		</Routes>
+		<Suspense fallback={<Spinner />}>
+			<Routes>
+				<Route path='/' element={<NavigationBar />}>
+					<Route index element={<Home />} />
+					<Route path='/shop/*' element={<Shop />} />
+					<Route path='/signIn' element={<SignIn />} />
+					<Route path='/checkout' element={<Checkout />} />
+				</Route>
+			</Routes>
+		</Suspense>
 	);
 };
 

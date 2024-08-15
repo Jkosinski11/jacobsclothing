@@ -15,8 +15,8 @@ color: ${subColor};
 		font-weight: normal;
 		position: absolute;
 		pointer-events: none;
-		left: 5px;
-		top: 10px;
+		left: 3px;
+		top: 3px;
 		transition: 300ms ease all;
 	${({ shrink }) => shrink && shrinkLabel}
 		}`;

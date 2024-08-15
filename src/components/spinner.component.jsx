@@ -1,7 +1,7 @@
 import { SpinnerContainer, SpinnerOverlay } from '../styles/spinner.styles';
 
 const Spinner = () => (
-	<SpinnerOverlay>
+	<SpinnerOverlay data-testid='spinner-overlay'>
 		<SpinnerContainer />
 	</SpinnerOverlay>
 );
